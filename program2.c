@@ -7,7 +7,7 @@ int main() {
     printf("insert time 1 and time 2 respectively seperated with a space following the patter : hhmmss hhmmss\n");
     scanf("%d %d", &t1, &t2);
 
-    // seperate hours from minutes
+    // split read time vars into hours, minutes and seconds
     div_t div_output;
     div_output = div(t1, 10000);
     int h1 = div_output.quot;
