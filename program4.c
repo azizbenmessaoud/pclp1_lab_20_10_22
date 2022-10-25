@@ -15,39 +15,35 @@ int main() {
     // reading array 
     // we suppose that all only one number does not repeat
 
-    int array[N];
-    for (int i=0; i<N; i++) {
+    printf("insert %d values : \n", N+1);
+    int array[N+1];
+    for (int i=0; i<N+1; i++) {
         scanf("%d", &array[i]);
     }
 
     // printing our array
 
     printf("our array is : \n\t");
-    for (int i=0; i<N; i++) {
+    for (int i=0; i<N+1; i++) {
         printf("%d ", array[i]);
     }
 
-    // algorithme to find the unique number 
-    // not efficient , could be built using recursivity!
+    int repeated_number = -1;
+    int times_repeated = 0;
 
-    bool unique = false;
-    int unique_number;
-
-    for (int i=0; i<N; i++) {
-        for (int j=i+1; j<N; j++) {
-            if (array[i] == array[j]) {
-                break;
-            }
-            if (j==N-1) {
-                unique = true;
-                unique_number = array[i];
-            }
-        } 
-        if (unique == true) {
-            printf("\n%d is unique!", unique_number);
+    for (int i=0; i<N+1; i++) {
+        for (int j=0; j<N+1; j++) {
+            if (array[i] == array[j]) times_repeated += 1;
+        }
+        if (times_repeated == 2) {
+            repeated_number = array[i];
             break;
         }
+        times_repeated = 0;
     }
+
+    if (repeated_number == -1) printf("\n no number is repeated twice in the list!");
+    else printf("repeated number is %d", repeated_number);
 
     return 0;
 }
